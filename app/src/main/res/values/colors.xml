@@ -28,6 +28,7 @@
     <color name="ivory">#fffff0</color><!--象牙色 -->
     <color name="lightyellow">#ffffe0</color><!--亮黄色 -->
     <color name="yellow">#ffff00</color><!--黄色 -->
+    <color name="unhealth">#ffb400</color>
     <color name="snow">#fffafa</color><!--雪白色 -->
     <color name="floralwhite">#fffaf0</color><!--花白色 -->
     <color name="lemonchiffon">#fffacd</color><!--柠檬绸色 -->

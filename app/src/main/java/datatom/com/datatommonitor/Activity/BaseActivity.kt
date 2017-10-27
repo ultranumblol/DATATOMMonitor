@@ -1,18 +1,22 @@
 package com.datatom.productmonitor.Activity
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import datatom.com.datatommonitor.R
 
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import org.jetbrains.anko.find
 
 
 /**
@@ -27,6 +31,11 @@ abstract class BaseActivity : AppCompatActivity() {
     private var layoutBody: RelativeLayout? = null
     var rootview: RelativeLayout? = null
 
+    private var lldialog : LinearLayout? = null
+    private var imgdialog : ImageView? = null
+    private var txtdialog : TextView? = null
+
+
     var mcontentView : View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +49,19 @@ abstract class BaseActivity : AppCompatActivity() {
 
         rootview = findViewById(R.id.rl_root_root) as RelativeLayout
 
+        lldialog = find(R.id.ll_dialog)
+
+        imgdialog = find(R.id.img_dialog)
+
+        txtdialog = find(R.id.txt_dialog)
 
 
         setContentViewId()
 
         setToolBar()
+
+        hideDialog()
+
         this.initView()
     }
 
@@ -72,6 +89,41 @@ abstract class BaseActivity : AppCompatActivity() {
 
         layoutBody?.let { Snackbar.make(it,str,Snackbar.LENGTH_LONG).show() }
 
+    }
+
+    fun showDialog(){
+        lldialog!!.visibility = View.VISIBLE
+
+
+    }
+
+    fun hideDialog(){
+
+     lldialog!!.visibility = View.GONE
+    }
+
+    fun addpro (){
+        showDialog()
+        txtdialog!!.text = "正在添加..."
+        imgdialog!!.setImageResource(R.drawable.loadsuccess)
+        imgdialog!!.visibility = View.GONE
+
+
+    }
+
+    fun deleteSuccess(){
+        showDialog()
+        imgdialog!!.setImageResource(R.drawable.loadsuccess)
+        txtdialog!!.text ="删除成功"
+
+
+
+    }
+
+    fun addproSuccess(){
+        showDialog()
+        imgdialog!!.setImageResource(R.drawable.loadsuccess)
+        txtdialog!!.text ="产品添加成功"
     }
 
 

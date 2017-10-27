@@ -7,6 +7,14 @@
         <attr name="procolor" format="color"></attr>
 
     </declare-styleable>
+    <!-- waveview -->
+    <declare-styleable name="WaveView">
+        <attr name="backgroudColor" format="color"></attr>
+        <attr name="progressColor" format="color"></attr>
+        <attr name="max" format="integer"></attr>
+        <attr name="progress" format="integer"></attr>
+    </declare-styleable>
+
 
 
 

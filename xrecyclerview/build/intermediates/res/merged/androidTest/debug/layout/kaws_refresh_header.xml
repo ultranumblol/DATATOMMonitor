@@ -17,14 +17,14 @@
             android:id="@+id/img"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/header_yun_anim" />
+            android:src="@drawable/refresh" />
 
         <TextView
             android:id="@+id/msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
            android:layout_marginTop="10dp"
-            android:textColor="#00bfff"
+            android:textColor="#1987f6"
             android:text="@string/listview_header_hint_normal" />
     </LinearLayout>
 </LinearLayout>

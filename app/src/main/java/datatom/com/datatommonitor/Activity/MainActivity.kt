@@ -99,6 +99,7 @@ class MainActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
 
         adapter!!.addAll(mList)
         rv!!.refreshComplete()
+        adapter!!.notifyDataSetChanged()
 
 
     }

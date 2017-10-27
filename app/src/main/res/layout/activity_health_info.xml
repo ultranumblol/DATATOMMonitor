@@ -5,23 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:padding="14dp"
+
     tools:context="datatom.com.datatommonitor.Activity.HealthInfo">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        >
+        ><RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:src="@drawable/bgname"
+
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="HyHive v1.0.0-0000 |10.0.40.41|3节点"
+            android:id="@+id/id_pro_name"
+            android:textSize="14dp"
+            android:textColor="@color/white"
+            />
+
+    </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="数据加载失败"
+
+            android:visibility="gone"
+            android:id="@+id/id_nodata"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重试"
+            android:visibility="gone"
+            android:id="@+id/id_retry"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:background="@drawable/retry_bg_blue"
+            android:layout_marginBottom="20dp"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:padding="12dp"
             android:layout_marginBottom="10dp"
             >
             <FrameLayout
                 android:layout_width="match_parent"
-
-                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content">
 
                 <ImageView
@@ -112,6 +156,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:padding="12dp"
             >
 
             <FrameLayout

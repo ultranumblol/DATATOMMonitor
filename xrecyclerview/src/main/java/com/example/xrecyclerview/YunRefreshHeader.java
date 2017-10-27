@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,7 +25,6 @@ public class YunRefreshHeader extends LinearLayout implements BaseRefreshHeader 
     private int mMeasuredHeight;
     private LinearLayout mContainer;
     ObjectAnimator anim;
-
     public YunRefreshHeader(Context context) {
         this(context, null);
     }
@@ -42,16 +42,20 @@ public class YunRefreshHeader extends LinearLayout implements BaseRefreshHeader 
     private void initView() {
         LayoutInflater.from(mContext).inflate(R.layout.kaws_refresh_header, this);
         ImageView img = (ImageView) findViewById(R.id.img);
-        //animationDrawable = (AnimationDrawable) img.getDrawable();
 
-        anim = ObjectAnimator.ofFloat(img, "rotation", 0f, 360f);
+       // animationDrawable = (AnimationDrawable) img.getDrawable();
 
-        // 动画的持续时间，执行多久？
-        anim.setDuration(5000);
-//        animationDrawable = (AnimationDrawable) img.getDrawable();
-        if (animationDrawable.isRunning()) {
+       anim = ObjectAnimator.ofFloat(img, "rotation", 0f, 720f);
+
+        // 动画的持续时间，执行多久
+        anim.setDuration(2500);
+        anim.setInterpolator(new LinearInterpolator());
+        anim.setRepeatCount(ValueAnimator.INFINITE);
+
+
+      /*  if (animationDrawable.isRunning()) {
             animationDrawable.stop();
-        }
+        }*/
         msg = (TextView) findViewById(R.id.msg);
         measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         mMeasuredHeight = getMeasuredHeight();
@@ -80,16 +84,28 @@ public class YunRefreshHeader extends LinearLayout implements BaseRefreshHeader 
         if (state == mState) return;
         switch (state) {
             case STATE_NORMAL:
-                if (animationDrawable.isRunning()) {
+                /*if (animationDrawable.isRunning()) {
                     animationDrawable.stop();
+                }*/
+                if (msg.getText().equals(R.string.refresh_done)){
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            msg.setText(R.string.listview_header_hint_normal);
+                        }
+                    },1500);
+                }else {
+                    msg.setText(R.string.listview_header_hint_normal);
                 }
-                msg.setText(R.string.listview_header_hint_normal);
+
+
+
                 break;
             case STATE_RELEASE_TO_REFRESH:
                 if (mState != STATE_RELEASE_TO_REFRESH) {
-                    if (!animationDrawable.isRunning()) {
+                    /*if (!animationDrawable.isRunning()) {
                         animationDrawable.start();
-                    }
+                    }*/
                     msg.setText(R.string.listview_header_hint_release);
                     anim.start();
                 }
