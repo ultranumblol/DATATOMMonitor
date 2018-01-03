@@ -6,6 +6,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.LinearLayoutManager
+import android.view.ContextMenu
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import com.datatom.productmonitor.Activity.BaseActivity
 import com.jude.easyrecyclerview.EasyRecyclerView
 import datatom.com.datatommonitor.Adapter.ProductManagerAdapter
@@ -45,10 +49,10 @@ class ProductManagerAcitvity : BaseActivity() {
 
         rv!!.setLayoutManager(LinearLayoutManager(this))
 
-        val itemDecoration = DividerDecoration(Color.GRAY, 1,24, 10)//颜色 & 高度 & 左边距 & 右边距
+      /*  val itemDecoration = DividerDecoration(Color.GRAY, 1,24, 10)//颜色 & 高度 & 左边距 & 右边距
         itemDecoration.setDrawLastItem(true)//有时候你不想让最后一个item有分割线,默认true.
         itemDecoration.setDrawHeaderFooter(false)//是否对Header于Footer有效,默认false.
-        rv!!.addItemDecoration(itemDecoration)
+        rv!!.addItemDecoration(itemDecoration)*/
 
         rv!!.adapter = adapter
 
@@ -76,7 +80,21 @@ class ProductManagerAcitvity : BaseActivity() {
 
     }
 
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.addproduct, menu)
 
+        return true
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId==R.id.action_addproduct){
+            startActivity(Intent(this@ProductManagerAcitvity,AddProductActivity::class.java))
+
+        }
+
+        return super.onOptionsItemSelected(item)
+    }*/
 
     private fun initdata() {
 

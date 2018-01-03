@@ -1,7 +1,9 @@
 package com.datatom.productmonitor.Activity
 
 import android.opengl.Visibility
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
@@ -11,6 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import datatom.com.datatommonitor.Activity.WrapperActivity
 import datatom.com.datatommonitor.R
 
 
@@ -23,7 +26,7 @@ import org.jetbrains.anko.find
  * Created by wgz on 2017/7/26.
  */
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : WrapperActivity() {
 
     internal var toolBar: Toolbar? = null
 
@@ -69,6 +72,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
 
 
+    @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // 此时android.R.id.home即为返回箭头
         if (item.itemId == android.R.id.home) {

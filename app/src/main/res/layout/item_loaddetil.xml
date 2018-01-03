@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,6 +18,13 @@
             android:layout_marginBottom="2dp"
             android:textColor="@color/colorPrimary"
             />
+       <!-- <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@color/gray"
+            />-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,16 +36,16 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="7"
                 android:layout_height="wrap_content"
-                android:text="CPU使用率"
+                android:text="CPU"
                 android:textSize="12sp"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/black"
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:layout_height="wrap_content"
                 android:text="内存使用率"
                 android:textSize="12sp"
@@ -45,7 +54,7 @@
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:layout_height="wrap_content"
                 android:text="IOPS(OPS)"
                 android:textSize="12sp"
@@ -54,9 +63,9 @@
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="12"
                 android:layout_height="wrap_content"
-                android:text="读/写带宽"
+                android:text="读/写带宽(MB/s)"
                 android:layout_centerHorizontal="true"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -128,7 +137,7 @@
             >
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="7"
                 android:layout_height="wrap_content"
                 android:text="80%"
                 android:textSize="12dp"
@@ -137,7 +146,7 @@
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:layout_height="wrap_content"
                 android:text="80%"
                 android:textSize="12dp"
@@ -146,7 +155,7 @@
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="10"
                 android:layout_height="wrap_content"
                 android:text="80%"
                 android:textSize="12dp"
@@ -155,7 +164,7 @@
                 />
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="12"
                 android:layout_height="wrap_content"
                 android:text="80%"
                 android:textSize="12dp"
@@ -165,12 +174,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
-            android:background="@color/gray"
-            />
+
     </LinearLayout>
 </LinearLayout>

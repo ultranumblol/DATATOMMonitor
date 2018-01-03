@@ -28,6 +28,7 @@ import java.util.List;
 
 import datatom.com.datatommonitor.R;
 import datatom.com.datatommonitor.Util.DensityUtil;
+import wgz.datatom.com.utillibrary.util.LogUtil;
 
 import static android.view.animation.Animation.INFINITE;
 
@@ -115,7 +116,7 @@ public class WaveView extends View {
     private boolean isDone = false;// whether to end
     private boolean isMeasure = false;// The first time for measure view
     private boolean isCompleteLayout = false;//just action when drawing finish
-    boolean isHasWindowFocus = false;// is hasWindowFocus
+    boolean isHasWindowFocus = true;// is hasWindowFocus
 
     /**
      * < value ></>
@@ -144,9 +145,9 @@ public class WaveView extends View {
     /**
      * < the progress for waveview ></>
      */
-    private long progress = 0;// The current progress
-    private long curProgress = 0;// The current progress , in order to deal with some logical work
-    private long max = 0;// The max progress
+    private long progress = 60;// The current progress
+    private long curProgress = 60;// The current progress , in order to deal with some logical work
+    private long max = 100;// The max progress
     private float progressRatio = 0f;// ratio < result = progress / max >
 
     private waveProgressListener progressListener;
@@ -177,7 +178,7 @@ public class WaveView extends View {
 
             BG_COLOR = bgColor;
             WAVE_COLOR = pColor;
-            max = aMax;
+            max = 100;
             progress = aP;
 
             typedArray.recycle();
@@ -273,6 +274,8 @@ public class WaveView extends View {
             dy = VIEW_HEIGHT;//Started from the bottom, when the height is rise, dy gradually reduce
             //How many points calculated maximum support
             int n = Math.round(VIEW_WIDTH / WAVE_WIDTH);
+
+            LogUtil.d("wave hight : "+WAVE_HEIGHT);
             //start point for normal wave
             int startX = 0;
             Log.i(TAG,"begin point ("+DensityUtil.px2dip(mContext,startX)+" , "+DensityUtil.px2dip(mContext,dy)+")");
@@ -589,6 +592,8 @@ public class WaveView extends View {
         if (mode.equals(MODE_RECT)){
             canvas.drawRect(0,0,VIEW_WIDTH,VIEW_HEIGHT,mPaint);
         } else{
+
+
            // canvas.drawCircle(VIEW_WIDTH / 2f, VIEW_HEIGHT / 2f, radius, mPaint);
             canvas.drawCircle(centerX, centerY, radius, mPaint);
 
@@ -597,7 +602,7 @@ public class WaveView extends View {
         //画外围圆圈
         circlepaint.setColor(WAVE_COLOR);
 
-        circlepaint.setAlpha(100);
+        circlepaint.setAlpha(140);
 
         circlepaint.setStyle(Paint.Style.STROKE);
 
@@ -611,7 +616,7 @@ public class WaveView extends View {
 
         circlepaint.setStrokeWidth(8f);
 
-        circlepaint.setAlpha(120);
+        circlepaint.setAlpha(160);
 
         canvas.drawArc(arcRectF, startangle+300f+4f, 1f, false, circlepaint);
 
@@ -701,7 +706,7 @@ public class WaveView extends View {
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        isHasWindowFocus = hasWindowFocus;
+        isHasWindowFocus = true;
 //        Log.d("yuan"," onWindowFocusChanged " + hasWindowFocus);
         if (!isDone){
             if (!isStartAnimation) {
@@ -711,7 +716,7 @@ public class WaveView extends View {
             // TODO: 2016/10/26  屏幕重新点亮的时候 一定要重新测量！！！
             if (!hasWindowFocus) {
                 if (flowingAnimato != null)
-                    flowingAnimato.cancel();
+                   // flowingAnimato.cancel();
                 if (reiseAnimator != null)
                     reiseAnimator.end();
                 isMeasure = false;
@@ -768,10 +773,10 @@ public class WaveView extends View {
     }
 
     private void riseAnimation(){
-        if (!isHasWindowFocus){
+       /* if (!isHasWindowFocus){
             // TODO: 2016/10/26 不可视的时候停止
             return ;
-        }
+        }*/
         isMeasure = true;
         Log.i("yuan", "move "  + "dy " + dy);
         if (dy > 0) {
@@ -845,7 +850,7 @@ public class WaveView extends View {
         mPaint.setColor(WAVE_COLOR);
 //        mPaint.setAlpha(200);
         if (flowingAnimato != null && flowingAnimato.isRunning()) {
-            flowingAnimato.end();
+            //flowingAnimato.end();
             flowingAnimato = null;
         }
         else invalidate();

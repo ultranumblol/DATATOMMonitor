@@ -1,6 +1,9 @@
 package datatom.com.datatommonitor.Util;
 
 import android.content.res.Resources;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
 
 /**
@@ -13,4 +16,10 @@ public class SomeUtil {
         return dp * metrics.density;
     }
 
+    //获取相对时间
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
+    public static String getRelativeDays(long time){
+
+        return String.valueOf(DateUtils.getRelativeTimeSpanString(time));
+    }
 }

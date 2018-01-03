@@ -31,14 +31,16 @@ class ProductManagerAdapter(context: Context) : MyRecyclerArrayAdapter<ProductBe
     private inner class ProductManagerViewHolder(itemView: ViewGroup) : BaseViewHolder<ProductBean>(itemView, R.layout.item_productlist) {
 
         private var name: TextView
+        private var ip : TextView
 
-        private val delete: ImageView
+        private val delete: TextView
 
 
 
         init {
             name = `$`<TextView>(R.id.id_productname)
-            delete = `$`<ImageView>(R.id.img_delete)
+            delete = `$`<TextView>(R.id.img_delete)
+            ip = `$`<TextView>(R.id.id_productip)
 
 
         }
@@ -46,6 +48,11 @@ class ProductManagerAdapter(context: Context) : MyRecyclerArrayAdapter<ProductBe
         override fun setData(data: ProductBean?) {
 
             name.text = data!!.name
+
+
+            name.text = "HyHive v1.0.0-0000"
+
+            ip.text = "10.0.40.41 | 3节点"
 
             delete.setOnClickListener {
 

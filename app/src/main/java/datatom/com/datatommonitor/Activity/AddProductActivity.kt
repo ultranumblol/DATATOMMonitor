@@ -12,38 +12,30 @@ import android.widget.TextView
 import datatom.com.datatommonitor.Entity.ProductBean
 import datatom.com.datatommonitor.Entity.ProductBeanDao
 import datatom.com.datatommonitor.Util.GreenDaoManager
-import datatom.com.datatommonitor.Util.HttpUtil
-import datatom.com.datatommonitor.Util.RxUtil
-import io.reactivex.observers.DisposableObserver
-import me.jessyan.retrofiturlmanager.RetrofitUrlManager
-import org.greenrobot.greendao.rx.RxDao
+
 import org.jetbrains.anko.find
 import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.toast
-import org.reactivestreams.Subscriber
-import java.util.function.Consumer
 
 
 class AddProductActivity : BaseActivity() {
 
-    var spinner :Spinner  ?= null
+    var spinner: Spinner? = null
 
     private var data_list: ArrayList<String>? = null
 
-   // private var productdao: RxDao<ProductBean, Long> ?= null
+    // private var productdao: RxDao<ProductBean, Long> ?= null
 
-    private var productdao2: ProductBeanDao ?= null
+    private var productdao2: ProductBeanDao? = null
 
     private var arr_adapter: ArrayAdapter<String>? = null
 
-    var ip :EditText? = null
+    var ip: EditText? = null
 
-    var username :EditText? = null
+    var username: EditText? = null
 
-    var pwd :EditText? = null
+    var pwd: EditText? = null
 
-    var addbutton : TextView? = null
-
+    var addbutton: TextView? = null
 
 
     override fun initView() {
@@ -52,7 +44,7 @@ class AddProductActivity : BaseActivity() {
 
         val session = GreenDaoManager.getInstance().getSession()
 
-       // productdao = session.productBeanDao.rx()
+        // productdao = session.productBeanDao.rx()
 
         productdao2 = session.productBeanDao
 
@@ -78,13 +70,13 @@ class AddProductActivity : BaseActivity() {
         addbutton!!.onClick {
             var isOk = true
 
-            var product : ProductBean? = null
-            if (pwd!!.text.toString().equals("")){
+            var product: ProductBean? = null
+            if (pwd!!.text.toString().equals("")) {
                 ShowSnackLong("请输入密码")
                 isOk = false
 
             }
-            if (username!!.text.toString().equals("")){
+            if (username!!.text.toString().equals("")) {
 
                 ShowSnackLong("请输入用户名")
 
@@ -92,7 +84,7 @@ class AddProductActivity : BaseActivity() {
                 isOk = false
             }
 
-            if (ip!!.text.toString().equals("")){
+            if (ip!!.text.toString().equals("")) {
 
                 ShowSnackLong("请输入ip")
                 isOk = false
@@ -100,9 +92,8 @@ class AddProductActivity : BaseActivity() {
             }
 
 
-
             //测试
-            if (isOk){
+            if (isOk) {
 
                 product = ProductBean()
 
@@ -141,6 +132,17 @@ class AddProductActivity : BaseActivity() {
                         override fun onComplete() {
                             if (isOk){
 
+                            User findUser = userDao.queryBuilder().where(UserDao.Properties.Name.eq("wyk")).build().unique();
+if(findUser != null) {
+    findUser.setName(newName);
+    userDao.update(findUser);
+    Toast.makeText(MyApplication.getContext(), "修改成功", Toast.LENGTH_SHORT).show();
+} else {
+    Toast.makeText(MyApplication.getContext(), "用户不存在", Toast.LENGTH_SHORT).show();
+}
+
+
+
                                 product = ProductBean()
 
                                 product!!.ip = ip!!.text.toString()
@@ -161,9 +163,6 @@ class AddProductActivity : BaseActivity() {
 
 
                     })*/
-
-
-
 
 
         }
@@ -183,12 +182,12 @@ class AddProductActivity : BaseActivity() {
         return R.layout.activity_add_product
     }
 
-   /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
-        menuInflater.inflate(R.menu.addproduct, menu)
+         menuInflater.inflate(R.menu.addproduct, menu)
 
-        return true
-    }*/
+         return true
+     }*/
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         val id = item.itemId
@@ -197,13 +196,13 @@ class AddProductActivity : BaseActivity() {
 
             var isOk = true
 
-            var product : ProductBean? = null
-            if (pwd!!.text.toString().equals("")){
+            var product: ProductBean? = null
+            if (pwd!!.text.toString().equals("")) {
                 ShowSnackLong("请输入密码")
                 isOk = false
 
             }
-            if (username!!.text.toString().equals("")){
+            if (username!!.text.toString().equals("")) {
 
                 ShowSnackLong("请输入用户名")
 
@@ -211,17 +210,16 @@ class AddProductActivity : BaseActivity() {
                 isOk = false
             }
 
-            if (ip!!.text.toString().equals("")){
+            if (ip!!.text.toString().equals("")) {
 
                 ShowSnackLong("请输入ip")
-               isOk = false
+                isOk = false
 
             }
 
 
-
-        //测试
-            if (isOk){
+            //测试
+            if (isOk) {
 
                 product = ProductBean()
 
@@ -280,10 +278,6 @@ class AddProductActivity : BaseActivity() {
 
 
                     })*/
-
-
-
-
 
 
         }

@@ -5,6 +5,7 @@
         android:id="@+id/action_addproduct"
         android:orderInCategory="100"
         android:title="添加"
+        android:icon="@drawable/addpro"
         app:showAsAction="always" />
 
 </menu>

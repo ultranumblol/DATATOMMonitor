@@ -6,14 +6,6 @@
     android:layout_height="match_parent"
     tools:context="datatom.com.datatommonitor.Activity.MainActivity">
 
-    <!--<com.jude.easyrecyclerview.EasyRecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/id_home_rv"
-        app:scrollbarStyle="insideOverlay"
-
-        app:layout_empty="@layout/view_empty"
-        ></com.jude.easyrecyclerview.EasyRecyclerView>-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

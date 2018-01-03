@@ -4,11 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.widget.LinearLayout
 import com.datatom.productmonitor.Activity.BaseActivity
 import com.jude.easyrecyclerview.EasyRecyclerView
 import datatom.com.datatommonitor.Adapter.FullyLinearLayoutManager
 import datatom.com.datatommonitor.Adapter.HealthAdapter
 import datatom.com.datatommonitor.R
+import org.jetbrains.anko.find
 
 class HealthInfo : BaseActivity() {
 
@@ -24,6 +26,10 @@ class HealthInfo : BaseActivity() {
 
     var warningRv : RecyclerView? = null
 
+    var ll_nodata : LinearLayout? = null
+
+    var ll_showdata : LinearLayout? = null
+
 
     override fun initView() {
         setToolbartitle("健康详情")
@@ -31,6 +37,10 @@ class HealthInfo : BaseActivity() {
         errorRv = findViewById(R.id.id_error_rv) as RecyclerView
 
         warningRv = findViewById(R.id.id_warning_rv) as RecyclerView
+
+        ll_nodata = find(R.id.ll_nodata)
+
+        ll_showdata = find(R.id.ll_showdata)
 
         errorAdapter = HealthAdapter(applicationContext)
 
